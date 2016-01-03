@@ -44,5 +44,5 @@ class DataReader(object):
             else :
                 nodes.append(globalR)
             elements.append(Element(nodes[i], nodes[i+1], c, ro, k))
-        return ne, nh, elements, nodes
+        return ne, nh, globalR, elements, nodes
 
