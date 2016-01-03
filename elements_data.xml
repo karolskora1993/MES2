@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<elements_data>
+	<element>
+        <dlugosc>2.5</dlugosc>
+        <cieplo_wlasciwe>50</cieplo_wlasciwe>
+        <gestosc_materialu>2</gestosc_materialu>
+        <wspolczynnik_przewodzenia_ciepla>0</wspolczynnik_przewodzenia_ciepla>
+    </element>
+    <element>
+        <dlugosc>2.5</dlugosc>
+        <cieplo_wlasciwe>50</cieplo_wlasciwe>
+        <gestosc_materialu>2</gestosc_materialu>
+        <wspolczynnik_przewodzenia_ciepla>0</wspolczynnik_przewodzenia_ciepla>
+    </element>
+    <element>
+        <dlugosc>2.5</dlugosc>
+        <cieplo_wlasciwe>50</cieplo_wlasciwe>
+        <gestosc_materialu>2</gestosc_materialu>
+        <wspolczynnik_przewodzenia_ciepla>0</wspolczynnik_przewodzenia_ciepla>
+    </element>
+    </elements_data>
