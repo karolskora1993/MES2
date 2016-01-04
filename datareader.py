@@ -14,11 +14,11 @@ class DataReader(object):
         tree=et.parse(fileName+".xml")
         root=tree.getroot()
         for child in root:
-            rMin=int(child.find('promień_minimalny_wsadu').text)
-            alfaAir=int(child.find('współczynnik_konwekcyjnej_wymiany_ciepła').text)
-            tempBegin=int(child.find('temperatura_początkowa').text)
-            tempAir=int(child.find('temperatura_otoczenia').text)
-            tauMax=int(child.find('czas_procesu').text)
+            rMin=float(child.find('promień_minimalny_wsadu').text)
+            alfaAir=float(child.find('współczynnik_konwekcyjnej_wymiany_ciepła').text)
+            tempBegin=float(child.find('temperatura_początkowa').text)
+            tempAir=float(child.find('temperatura_otoczenia').text)
+            tauMax=float(child.find('czas_procesu').text)
         return rMin, alfaAir, tempBegin, tempAir, tauMax
 
     @staticmethod
@@ -33,16 +33,32 @@ class DataReader(object):
         for child in root:
             ne+=1
         nh=ne+1
-        for i in range(0,ne-1):
-            globalR+=int(child.find('dlugosc').text)
-            c=int(child.find('cieplo_wlasciwe').text)
-            ro=int(child.find('gestosc_materialu').text)
-            k=int(child.find('wspolczynnik_przewodzenia_ciepla').text)
+        print("Wczytuje dane elementow z pliku:\n")
+        for i in range(0,ne):
+            print("Element numer {}: \n".format(i))
+            globalR += float(child.find('dlugosc').text)
+            print("dlugosc: {} \n".format(globalR))
+
+            c=float(child.find('cieplo_wlasciwe').text)
+            print("cieplo wlasciwe: {} \n".format(c))
+
+            ro=float(child.find('gestosc_materialu').text)
+            print("gestosc materialu: {} \n".format(ro))
+
+            k=float(child.find('wspolczynnik_przewodzenia_ciepla').text)
+            print("wspolczynnik przewodzenia ciepla: {} \n".format(k))
+
             if i==0:
-                nodes.append(Node(0))
-                nodes.append(globalR+rMin)
+                node1=Node(0)
+                node2=Node(globalR+rMin)
+                nodes.append(node1)
+                nodes.append(node2)
             else :
-                nodes.append(globalR)
-            elements.append(Element(nodes[i], nodes[i+1], c, ro, k))
+                node=Node(globalR+rMin)
+                nodes.append(node)
+
+            element=Element(nodes[i], nodes[i+1], c, ro, k)
+            elements.append(element)
+
         return ne, nh, globalR, elements, nodes
 

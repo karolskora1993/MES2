@@ -17,3 +17,10 @@ class GlobalData(object):
         return self.__tempBegin
     def getTempAir(self):
         return self.__tempAir
+    def getTauMax(self):
+        return self.__tauMax
+
+    def printGlobalData(self):
+        print("dane globalne: \n")
+        print("ne= {} rMin={} rMax={}  alfaAir={} tempBegin={} tempAir={} tauMax={} \n".format(self.__ne, self.__rMin, self.__rMax, self.__alfaAir,
+                                                                                               self.__tempBegin, self.__tempAir, self.__tauMax))
