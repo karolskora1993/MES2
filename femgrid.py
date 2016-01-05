@@ -11,6 +11,11 @@ class FemGrid(object):
     def getNode(self, i):
         return self.__nodes[i]
 
+    def getKg(self):
+        return self.__kg
+    def getFg(self):
+        return self.__fg
+
     def setLocalMatrixAndVectors(self, globalData):
         for element in self.__elements:
             element.setLocalMatrixAndVector(globalData)
@@ -20,11 +25,12 @@ class FemGrid(object):
             element.printLocalMatrixAndVector()
 
     def setGlobalMatrixAndVector(self, nh):
-        self.__kg=[[0]*nh]*nh
-        self.__fg=[0]*nh
+        self.__kg=[[0]* nh for i in range(0,nh)]
+        self.__fg=[0 for i in range(0,nh)]
+
         for i in range(0, nh-1):
             ke=self.__elements[i].getKe()
-            self.__kg[i][i]+=ke[0][0]
+            self.__kg[1][1]+=ke[0][0]
             self.__kg[i][i+1]+=ke[0][1]
             self.__kg[i+1][i]+=ke[1][0]
             self.__kg[i+1][i+1]+=ke[1][1]

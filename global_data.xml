@@ -5,6 +5,6 @@
         <współczynnik_konwekcyjnej_wymiany_ciepła>300</współczynnik_konwekcyjnej_wymiany_ciepła>
         <temperatura_początkowa>100</temperatura_początkowa>
         <temperatura_otoczenia>200</temperatura_otoczenia>
-        <czas_procesu>50</czas_procesu>
+        <czas_procesu>1000</czas_procesu>
     </global_data>
 </data>
