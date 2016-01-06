@@ -36,7 +36,7 @@ class FemGrid(object):
 
         for i in range(0, nh-1):
             ke=self.__elements[i].getKe()
-            self.__kg[1][1]+=ke[0][0]
+            self.__kg[i][i]+=ke[0][0]
             self.__kg[i][i+1]+=ke[0][1]
             self.__kg[i+1][i]+=ke[1][0]
             self.__kg[i+1][i+1]+=ke[1][1]
