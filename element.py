@@ -46,7 +46,7 @@ class Element(object):
         self.__ke[1][1]=self.__k*(rp[0]*w[0]+rp[1]*w[1])/dR + self.__c*self.__ro*dR*(rp[0]*w[0]*(n[0][1])**2 +rp[1]*w[1]*(n[1][1])**2 )/dTau +2*alfa*globalData.getRMax()
 
         self.__fe[0]=-self.__c*self.__ro*dR*(((n[0][0]*globalData.getTempBegin()+n[0][1]*globalData.getTempBegin())*n[0][0]*rp[0]*w[0])+(n[1][0]*globalData.getTempBegin()+n[1][1]*globalData.getTempBegin() )*n[1][0]*rp[1]*w[1])/dTau
-        self.__fe[0]=-self.__c*self.__ro*dR*(((n[0][0]*globalData.getTempBegin()+n[0][1]*globalData.getTempBegin())*n[0][0]*rp[0]*w[0])+(n[1][0]*globalData.getTempBegin()+n[1][1]*globalData.getTempBegin() )*n[1][0]*rp[1]*w[1])/dTau -2*alfa*globalData.getRMax()*globalData.getTempAir()
+        self.__fe[0]=-self.__c*self.__ro*dR*(((n[0][0]*globalData.getTempBegin()+n[0][1]*globalData.getTempBegin())*n[0][1]*rp[0]*w[0])+(n[1][0]*globalData.getTempBegin()+n[1][1]*globalData.getTempBegin() )*n[1][1]*rp[1]*w[1])/dTau -2*alfa*globalData.getRMax()*globalData.getTempAir()
 
     def printLocalMatrixAndVector(self):
         print("\n element")

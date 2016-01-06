@@ -16,6 +16,12 @@ class FemGrid(object):
     def getFg(self):
         return self.__fg
 
+    def getNodesR(self):
+        r=[]
+        for node in self.__nodes:
+            r.append(node.getR())
+        return r
+
     def setLocalMatrixAndVectors(self, globalData):
         for element in self.__elements:
             element.setLocalMatrixAndVector(globalData)

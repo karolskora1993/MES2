@@ -1,7 +1,7 @@
 class DataWriter(object):
     @staticmethod
-    def writeData(data, fileName):
+    def writeData(fileName, data):
 
         with open(fileName, 'w') as file:
-            file.write(data)
+            file.write(str(data))
 

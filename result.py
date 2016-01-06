@@ -11,10 +11,10 @@ class Result(object):
 
         localFe=[]
         for x in fe:
-            localFe.append(-x)
+            localFe.append(x*(-1))
         b=np.array(localFe)
 
-        self_temp=np.linalg.solve(a,b)
+        self.__temp=np.linalg.solve(a, b)
 
     def printTemperatures(self):
         print("wektor temperatur w poszczególnych węzłach:")
