@@ -19,10 +19,11 @@ class DataReader(object):
             tempBegin=float(child.find('temperatura_początkowa').text)
             tempAir=float(child.find('temperatura_otoczenia').text)
             tauMax=float(child.find('czas_procesu').text)
-        return rMin, alfaAir, tempBegin, tempAir, tauMax
+            nTime = float(child.find('ilosc_iteracji').text)
+        return rMin, alfaAir, tempBegin, tempAir, tauMax, nTime
 
     @staticmethod
-    def readElementsData(fileName, rMin):
+    def readElementsData(fileName, rMin, tempBegin):
         ne=0
         nh=0
         globalR=0
@@ -49,12 +50,12 @@ class DataReader(object):
             print("wspolczynnik przewodzenia ciepla: {} \n".format(k))
 
             if i==0:
-                node1=Node(0)
-                node2=Node(globalR+rMin)
+                node1=Node(0, tempBegin)
+                node2=Node(globalR+rMin, tempBegin)
                 nodes.append(node1)
                 nodes.append(node2)
             else :
-                node=Node(globalR+rMin)
+                node=Node(globalR+rMin, tempBegin)
                 nodes.append(node)
 
             element=Element(nodes[i], nodes[i+1], c, ro, k)

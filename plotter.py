@@ -8,5 +8,5 @@ class Plotter(object):
         plt.title("Zależność temperatury od promienia")
         plt.xlabel(xLabel)
         plt.ylabel(yLabel)
-        plt.plot(xValues, yValues)
+        plt.plot(xValues, [0 for i in range (0, len(xValues))])
         plt.show()

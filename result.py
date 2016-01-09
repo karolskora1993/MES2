@@ -1,22 +1,24 @@
 import numpy as np
 class Result(object):
     def __init__(self):
-        self.__temp=[]
+        self.__temp = []
 
     def getTemperatures(self):
         return self.__temp
 
-    def solveSystemOfEquation(self, ke, fe):
-        a=np.array(ke)
+    def solveSystemOfEquation(self, kg, fg):
+        a=np.array(kg)
 
-        localFe=[]
-        for x in fe:
-            localFe.append(x*(-1))
-        b=np.array(localFe)
+        localF=[]
+        for x in fg:
+            localF.append(x*(-1))
+        b=np.array(localF)
 
-        self.__temp=np.linalg.solve(a, b)
+        temperatures = np.linalg.solve(a, b).tolist()
+        self.__temp.append(temperatures)
+        return temperatures
 
     def printTemperatures(self):
         print("wektor temperatur w poszczególnych węzłach:")
-        for x in self.__temp:
-            print(x)
+        print(self.__temp)
+

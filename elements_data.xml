@@ -1,49 +1,31 @@
 <?xml version="1.0"?>
 <elements_data>
 	<element>
-        <dlugosc>0.1</dlugosc>
+        <dlugosc>0.01</dlugosc>
         <cieplo_wlasciwe>700</cieplo_wlasciwe>
         <gestosc_materialu>7800</gestosc_materialu>
         <wspolczynnik_przewodzenia_ciepla>25</wspolczynnik_przewodzenia_ciepla>
     </element>
     <element>
-        <dlugosc>0.1</dlugosc>
+        <dlugosc>0.01</dlugosc>
         <cieplo_wlasciwe>700</cieplo_wlasciwe>
         <gestosc_materialu>7800</gestosc_materialu>
         <wspolczynnik_przewodzenia_ciepla>25</wspolczynnik_przewodzenia_ciepla>
     </element>
     <element>
-        <dlugosc>0.1</dlugosc>
+        <dlugosc>0.01</dlugosc>
         <cieplo_wlasciwe>700</cieplo_wlasciwe>
         <gestosc_materialu>7800</gestosc_materialu>
         <wspolczynnik_przewodzenia_ciepla>25</wspolczynnik_przewodzenia_ciepla>
     </element>
     	<element>
-        <dlugosc>0.1</dlugosc>
+        <dlugosc>0.01</dlugosc>
         <cieplo_wlasciwe>700</cieplo_wlasciwe>
         <gestosc_materialu>7800</gestosc_materialu>
         <wspolczynnik_przewodzenia_ciepla>25</wspolczynnik_przewodzenia_ciepla>
     </element>
     <element>
-        <dlugosc>0.1</dlugosc>
-        <cieplo_wlasciwe>700</cieplo_wlasciwe>
-        <gestosc_materialu>7800</gestosc_materialu>
-        <wspolczynnik_przewodzenia_ciepla>25</wspolczynnik_przewodzenia_ciepla>
-    </element>
-    <element>
-        <dlugosc>0.1</dlugosc>
-        <cieplo_wlasciwe>700</cieplo_wlasciwe>
-        <gestosc_materialu>7800</gestosc_materialu>
-        <wspolczynnik_przewodzenia_ciepla>25</wspolczynnik_przewodzenia_ciepla>
-    </element>
-    <element>
-        <dlugosc>0.1</dlugosc>
-        <cieplo_wlasciwe>700</cieplo_wlasciwe>
-        <gestosc_materialu>7800</gestosc_materialu>
-        <wspolczynnik_przewodzenia_ciepla>25</wspolczynnik_przewodzenia_ciepla>
-    </element>
-    <element>
-        <dlugosc>0.1</dlugosc>
+        <dlugosc>0.01</dlugosc>
         <cieplo_wlasciwe>700</cieplo_wlasciwe>
         <gestosc_materialu>7800</gestosc_materialu>
         <wspolczynnik_przewodzenia_ciepla>25</wspolczynnik_przewodzenia_ciepla>

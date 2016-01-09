@@ -4,7 +4,8 @@
         <promień_minimalny_wsadu>0</promień_minimalny_wsadu>
         <współczynnik_konwekcyjnej_wymiany_ciepła>300</współczynnik_konwekcyjnej_wymiany_ciepła>
         <temperatura_początkowa>100</temperatura_początkowa>
-        <temperatura_otoczenia>200</temperatura_otoczenia>
+        <temperatura_otoczenia>1200</temperatura_otoczenia>
         <czas_procesu>1000</czas_procesu>
+        <ilosc_iteracji>10</ilosc_iteracji>
     </global_data>
 </data>

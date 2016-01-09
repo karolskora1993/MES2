@@ -5,24 +5,18 @@ from globaldata import GlobalData
 from result import Result
 from plotter import Plotter
 
-rMin, alfaAir, tempBegin, tempAir, tauMax = DataReader.readGlobalData("global_data")
-ne, nh, rMax, elements, nodes = DataReader.readElementsData("elements_data", rMin)
+rMin, alfaAir, tempBegin, tempAir, tauMax, nTime = DataReader.readGlobalData("global_data")
+ne, nh, rMax, elements, nodes = DataReader.readElementsData("elements_data", rMin, tempBegin)
 
-globalData = GlobalData(ne, nh, rMin, rMax, alfaAir, tempBegin, tempAir, tauMax)
+globalData = GlobalData(ne, nh, rMin, rMax, alfaAir, tempBegin, tempAir, tauMax, nTime)
 globalData.printGlobalData()
 
 femGrid = FemGrid(elements, nodes)
-femGrid.setLocalMatrixAndVectors(globalData)
-femGrid.printLocalMatrixAndVectors()
+result=femGrid.simulateProcess(globalData)
 
-femGrid.setGlobalMatrixAndVector(nh)
-femGrid.printGlobalMatrixAndVector()
-
-result=Result()
-result.solveSystemOfEquation(femGrid.getKg(), femGrid.getFg())
 result.printTemperatures()
 
 DataWriter.writeData("result.txt", result.getTemperatures())
-Plotter.plot("promień", "tepmeratura", femGrid.getNodesR(), result.getTemperatures())
+Plotter.plot("czas", "temperatura", femGrid.getTauArray(), result.getTemperatures())
 
 
