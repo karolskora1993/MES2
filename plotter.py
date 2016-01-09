@@ -8,5 +8,14 @@ class Plotter(object):
         plt.title("Zależność temperatury od promienia")
         plt.xlabel(xLabel)
         plt.ylabel(yLabel)
-        plt.plot(xValues, [0 for i in range (0, len(xValues))])
+        y1=[]
+        y2=[]
+
+        for i in range(0, len(yValues)):
+            y1.append(yValues[i][0])
+            y2.append(yValues[i][len(yValues[0])-1])
+
+        plt.plot(xValues, y1, label="rMin")
+        plt.plot(xValues, y2, label="rMax")
+        plt.legend()
         plt.show()

@@ -15,10 +15,11 @@ class Result(object):
         b=np.array(localF)
 
         temperatures = np.linalg.solve(a, b).tolist()
-        self.__temp.append(temperatures)
+        self.__temp.append(temperatures[:])
         return temperatures
 
     def printTemperatures(self):
         print("wektor temperatur w poszczególnych węzłach:")
-        print(self.__temp)
+        for x in self.__temp:
+            print(x)
 
