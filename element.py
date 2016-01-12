@@ -21,34 +21,33 @@ class Element(object):
         return self.__fe
 
     def setLocalMatrixAndVector(self, globalData, dTau):
+        self.__ke = [[0,0], [0,0]]
+        self.__fe = [0, 0]
+
         dR = self.__secondNode.getR()-self.__firstNode.getR()
 
-        alfaMin=0
-        alfaMax=0
+        w=[1, 1]
+
+        for i in range(0,2):
+            rp = globalData.getN(i,0) * self.__firstNode.getR() + globalData.getN(i,1) * self.__secondNode.getR()
+            tauP = globalData.getN(i,0) * self.__firstNode.getTemp() + globalData.getN(i,1) * self.__secondNode.getTemp()
+
+            self.__ke[0][0] += self.__k * rp * w[i] / dR + self.__c * self.__ro * dR * rp * w[i] * globalData.getN(i,0)**2 / dTau
+            self.__ke[0][1] += (-1)*self.__k * rp * w[i] / dR + self.__c * self.__ro * dR * rp * w[i] * globalData.getN(i,0) * globalData.getN(i,1) / dTau
+            self.__ke[1][0] += (-1)*self.__k * rp * w[i] / dR + self.__c * self.__ro * dR * rp * w[i] * globalData.getN(i,0) * globalData.getN(i,1) / dTau
+            self.__ke[1][1] += self.__k * rp * w[i] / dR + self.__c * self.__ro * dR * rp * w[i] * globalData.getN(i,1)**2 / dTau
+
+            self.__fe[0] += (-1)*self.__c * self.__ro * dR * tauP * rp * w[i] * globalData.getN(i,0) / dTau
+            self.__fe[1] += (-1)*self.__c * self.__ro * dR * tauP * rp * w[i] * globalData.getN(i,1) / dTau
 
         if globalData.getRMax() == self.__secondNode.getR():
-            alfaMax=globalData.getAlfaAir()
+            self.__ke[1][1] += 2 * globalData.getAlfaAir() * globalData.getRMax()
+            self.__fe[1] -= 2 * globalData.getAlfaAir() * globalData.getRMax() * globalData.getTempAir()
 
-        if globalData.getRMin() >0 :
+        if globalData.getRMin() > 0:
             if globalData.getRMin() == self.__firstNode.getR():
-                alfaMin=globalData.getAlfaAir()
-
-        w=[1,1]
-        e=[-0.5773502692,0.5773502692]
-        n=[[0.5*(1-e[0]),0.5*(1+e[0])],[0.5*(1-e[1]),0.5*(1+e[1])]]
-
-        rp=[n[0][0]*self.__firstNode.getR() + n[0][1]*self.__secondNode.getR(),
-            n[1][0]*self.__firstNode.getR() + n[1][1]*self.__secondNode.getR()]
-
-
-        self.__ke[0][0] = self.__k*(rp[0]*w[0]+rp[1]*w[1])/dR + self.__c*self.__ro*dR*(rp[0]*w[0]*(n[0][0])**2 +rp[1]*w[1]*(n[1][0])**2 )/dTau +2*alfaMin*globalData.getRMin()
-        self.__ke[0][1] = -self.__k*(rp[0]*w[0]+rp[1]*w[1])/dR + self.__c*self.__ro*dR*(n[0][0]*n[0][1]*rp[0]*w[0] +n[1][0]*n[1][1]*rp[1]*w[1] )/dTau
-        self.__ke[1][0] = -self.__k*(rp[0]*w[0]+rp[1]*w[1])/dR + self.__c*self.__ro*dR*(n[0][0]*n[0][1]*rp[0]*w[0] +n[1][0]*n[1][1]*rp[1]*w[1] )/dTau
-        self.__ke[1][1] = self.__k*(rp[0]*w[0]+rp[1]*w[1])/dR + self.__c*self.__ro*dR*(rp[0]*w[0]*(n[0][1])**2 +rp[1]*w[1]*(n[1][1])**2 )/dTau +2*alfaMax*globalData.getRMax()
-
-        self.__fe[0] = -self.__c*self.__ro*dR*(((n[0][0]*self.__firstNode.getTemp()+n[0][1]*self.__secondNode.getTemp())*n[0][0]*rp[0]*w[0])+(n[1][0]*globalData.getTempBegin()+n[1][1]*globalData.getTempBegin())*n[1][0]*rp[1]*w[1])/dTau -2*alfaMin*globalData.getRMin()*globalData.getTempAir()
-        self.__fe[0] = -self.__c*self.__ro*dR*(((n[0][0]*self.__firstNode.getTemp()+n[0][1]*self.__secondNode.getTemp())*n[0][1]*rp[0]*w[0])+(n[1][0]*globalData.getTempBegin()+n[1][1]*globalData.getTempBegin())*n[1][1]*rp[1]*w[1])/dTau -2*alfaMax*globalData.getRMax()*globalData.getTempAir()
-
+                self.__ke[0][0] += 2 * globalData.getAlfaAir() * globalData.getRMin()
+                self.__fe[0] -= 2 * globalData.getAlfaAir() * globalData.getRMin() * globalData.getTempAir()
 
     def printLocalMatrixAndVector(self):
         print("\n element")

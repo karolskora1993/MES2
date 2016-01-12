@@ -12,7 +12,7 @@ globalData = GlobalData(ne, nh, rMin, rMax, alfaAir, tempBegin, tempAir, tauMax,
 globalData.printGlobalData()
 
 femGrid = FemGrid(elements, nodes)
-result=femGrid.simulateProcess(globalData)
+result = femGrid.simulateProcess(globalData)
 
 result.printTemperatures()
 

@@ -7,7 +7,7 @@ class FemGrid(object):
         self.__nodes=nodes
         self.__kg=[[]]
         self.__fg=[]
-        self.__Result=None
+        self.__result=Result()
         self.__dTau=0
         self.__tauArray=[]
 
@@ -38,9 +38,6 @@ class FemGrid(object):
     def setLocalMatrixAndVectors(self, globalData):
         for element in self.__elements:
             element.setLocalMatrixAndVector(globalData, self.__dTau)
-
-    def printLocalMatrixAndVectors(self):
-        for element in self.__elements:
             element.printLocalMatrixAndVector()
 
     def setGlobalMatrixAndVector(self, nh):
@@ -65,8 +62,6 @@ class FemGrid(object):
     def simulateProcess(self, globalData):
         self.__dTau = globalData.getTauMax() / globalData.getNTime()
         tau = self.__dTau;
-
-        self.__result=Result()
 
         while tau <= globalData.getTauMax():
             self.setLocalMatrixAndVectors(globalData)

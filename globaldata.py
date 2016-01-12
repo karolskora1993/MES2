@@ -10,6 +10,9 @@ class GlobalData(object):
         self.__tauMax=tauMax
         self.__nTime=nTime
 
+        self.__e =[-0.5773502692,0.5773502692]
+        self.__n = [[0.5*(1-self.__e[0]),0.5*(1+self.__e[0])],[0.5*(1-self.__e[1]),0.5*(1+self.__e[1])]]
+
     def getRMax(self):
         return self.__rMax
 
@@ -33,6 +36,9 @@ class GlobalData(object):
 
     def getNh(self):
         return self.__nh
+
+    def getN(self, i, j):
+        return self.__n[i][j]
 
     def printGlobalData(self):
         print("dane globalne: \n")
